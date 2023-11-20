@@ -120,16 +120,15 @@ if [ -d "$directory_path" ]; then
         git config user.email "github-actions@github.com"
 
         current_time=$(date '+%s')
-        instrumentation_package=$(echo "$url" | sed -n 's|.*instrumentation/\([^/]*\).*|\1|p')
-        git checkout -b "update-instrumentations-$instrumentation_package-$current_time"
+        git checkout -b "update-instrumentations-$folder_name-$current_time"
 
         git add go.mod go.sum
-        git commit -m "Updated go.mod and go.sum files for $instrumentation_package-$current_time"
+        git commit -m "Updated go.mod and go.sum files for $folder_name"
         git push origin @
 
         # Create a PR request for the changes
         # shellcheck disable=SC2046
-        gh pr create --title "Updating instrumentation $instrumentation_package for new version $LATEST_VERSION-$current_time" \
+        gh pr create --title "Updating instrumentation $folder_name for new version $LATEST_VERSION-$current_time" \
         --body "This PR adds changes for the newer version $LATEST_VERSION for the instrumented package" --head $(git branch --show-current)
 
     done
