@@ -13,6 +13,6 @@ jobs:
         name: Checkout repo
         with:
           fetch-depth: 0
-          ssh-key: ${{secrets.PRIVATE_KEY_GO_TRACER_RELEASE}}
+          token: ${{secrets.PRIVATE_KEY_GO_TRACER_RELEASE}}
 
 
