@@ -124,7 +124,7 @@ if [ -d "$directory_path" ]; then
         current_time=$(date '+%s')
         git checkout -b "update-instrumentations-$folder_name-id-$current_time"
 
-        git add go.mod go.sum
+        git add go.mod go.sum README.md
         git commit -m "Updated go.mod and go.sum files for $folder_name"
         git push origin @
 
